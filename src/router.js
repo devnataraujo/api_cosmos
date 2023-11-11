@@ -14,5 +14,6 @@ router.get('/lista', userController.buscarListas); // executando funcao  buscarL
 router.post('/lista/user/:id', userController.buscarListasUsuario); // executando funcao  buscarLista do controller de usuário
 router.post('/tarefa/criar', userController.cadastrarTarefa); // executando funcao  cadastrarTarefa do controller de usuário
 router.post('/tarefa/:id', userController.buscarTarefa); // executando funcao  buscarTarefa do controller de usuário
+router.post('/tarefa/lista/:id/:usuario', userController.buscarTodasTarefasLista); // executando funcao  buscarTodasTarefasLista do controller de usuário
 
 module.exports = router; //exportando o router para ser usado em outro arquivo

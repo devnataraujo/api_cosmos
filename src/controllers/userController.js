@@ -40,6 +40,11 @@ const buscarTarefa = async (request, response) => {
     return response.status(200).json(tarefa);
 }
 
+const buscarTodasTarefasLista = async (request, response) => {
+    const tarefa = await userModel.buscarTodasTarefasLista(request.params);
+    return response.status(200).json(tarefa);
+}
+
 module.exports = {
     buscarUsuario,
     cadastrarUsuario,
@@ -48,6 +53,7 @@ module.exports = {
     buscarListas,
     buscarListasUsuario,
     cadastrarTarefa,
-    buscarTarefa
+    buscarTarefa,
+    buscarTodasTarefasLista,
 };
 

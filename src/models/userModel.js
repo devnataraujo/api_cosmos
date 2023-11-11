@@ -71,6 +71,19 @@ const buscarTarefa = async (infos) => {
     return tarefa; //retornando as infos da tarefa
 }
 
+const buscarTodasTarefasLista = async (infos) => {
+    const {id, usuario} = infos; //desestruturando o objeto infos
+    console.log(id)
+    console.log(usuario)
+    const query = ' select t.titulo, t.descricao, t.id_tarefa, etapa, data_inicio, data_conclusao, cor_lista from tarefa as t join lista as l on t.lista = l.id_lista where l.usuario = ? and t.lista = ?'; //criando a query
+    const values = [usuario, id]; //criando o array de valores
+    const [tarefa] = await connection.execute(query, values); //executando a query e armazenando o primeiro array do retorno
+    console.log(tarefa)
+    return tarefa; //retornando as infos da tarefa
+}
+
+
+
 module.exports = {
     buscarUsuario,
     cadastrarUsuario,
@@ -79,7 +92,8 @@ module.exports = {
     buscarListas,
     buscarListasUsuario,
     cadastrarTarefa,
-    buscarTarefa
+    buscarTarefa,
+    buscarTodasTarefasLista
 }; //exportando funcoes para serem usadas em outros arquivos
 
 
